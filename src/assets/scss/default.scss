@@ -1,3 +1,98 @@
-body {
+html, body {
   margin: 0;
+  position:relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: hsl(228, 33%, 97%);
+  font-family: 'Rubik', sans-serif;
+  font-size: 16px;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+#container {
+  width: 800px;
+  // min-height: 800px;
+}
+
+.comment-com {
+  margin: 12px 0px;
+}
+
+/* ============================================================================= 
+
+                                    CommentComponent
+
+============================================================================= */
+
+
+.comment {
+  background-color: white;
+  padding: 25px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #00000024;
+
+  .content {
+    display: flex;
+
+    .score {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+
+      .score-wrapper {
+        background-color: hsl(228, 33%, 97%);
+        text-align: center;
+        padding: 10px;
+        border-radius: 8px;
+
+        .num {
+          color: #5457B6;
+          padding: 15px 2px;
+        }
+      }
+    }
+
+    .content-wrapper{
+      margin-left: 20px;
+
+      .top {
+        display: flex;
+        align-items: center;
+  
+        .profile {
+          width: 36px;
+        }
+  
+        .created-at {
+          color: hsl(211, 10%, 45%)
+        }
+  
+        .reply-btn {
+          margin-left: auto;
+          border: none;
+          background-color: white;
+          font-size: 16px;
+          font-weight: 600;
+          color: #5457B6;
+          cursor:pointer;
+
+          &:hover {
+            color: hsl(228, 33%, 97%);
+            fill: hsl(228, 33%, 97%);
+          }
+        }
+      }
+
+      .body {
+        display: flex;
+        align-items: center;
+        margin-top: 10px;
+      }
+    }
+    
+  }
 }
