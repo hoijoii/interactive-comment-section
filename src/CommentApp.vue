@@ -1,15 +1,15 @@
 <template>
   <div id="container">
-    <comment-component 
-        v-for="(comment, idx) in comments" :key="idx"
+    <div class="mg-tb12" v-for="(comment, idx) in commentsStore.comments" :key="idx">
+      <comment-component 
         :id="idx"
         :content="comment.content"
         :createdAt="comment.createdAt"
         :score="comment.score"
         :user="comment.user"
         :replies="comment.replies"
-        class="comment-com"
-    />
+      />
+    </div>
   </div>
 </template>
 
@@ -20,8 +20,8 @@ import { IComment, IUser } from './types/comments'
 
 const commentsStore = useCommentsStore()
 
-const comments: Array<IComment> = commentsStore.data.comments
-const currentUser: IUser = commentsStore.data.currentUser
+/* const comments: Array<IComment> = commentsStore.comments
+const currentUser: IUser = commentsStore.currentUser */
 
 </script>
 

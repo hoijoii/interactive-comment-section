@@ -1,29 +1,9 @@
 <template>
-  <div>
-    <div class="comment-area">
-      <comment-layout
-        :content=content
-        :createdAt="createdAt"
-        :score="score"
-        :user="user"
-      />
-    </div>
-    <div class="reply-area" v-if="replies.length !== 0">
-        <comment-layout 
-          v-for="(reply, idx) in replies" :key="idx"
-          :content="reply.content"
-          :createdAt="reply.createdAt"
-          :score="reply.score"
-          :user="reply.user"
-          class="comment"
-        />
-        
-    </div>
-    
-    <!-- <div class="comment-content">
+  <div class="comment">
+    <div class="comment-content">
       <div class="score">
         <div class="score-wrapper">
-          <inline-svg :src="require('@/assets/images/icon-plus.svg')"/>
+          <inline-svg :src="require('@/assets/images/icon-plus.svg')" />
           <div class="num">{{ score }}</div>
           <inline-svg :src="require('@/assets/images/icon-minus.svg')"/>
         </div>
@@ -44,7 +24,7 @@
           <div class="text grayish-blue">{{ content }}</div>
         </div>
       </div>
-    </div> -->
+    </div>
   </div>
 </template>
 
@@ -52,12 +32,10 @@
 import { ref, Ref, defineProps } from 'vue'
 import InlineSvg from 'vue-inline-svg'
 import { useCommentsStore } from '@/stores/comments'
-import CommentLayout from './CommentLayout.vue'
 
 const commentsStore = useCommentsStore()
 
 const props = defineProps({
-  id: Number,
   content: String,
   createdAt: String,
   score: Number,
@@ -68,18 +46,9 @@ const props = defineProps({
       username: ''
     }
   },
-  replies: {
-    Type: Array,
-    default: () => [{
-      id: 0,
-      content: '',
-      createdAt: '',
-      score: 0,
-      replyingTo: '',
-      user: {},
-    }]
-  }
 })
-
-
 </script>
+
+<style lang="scss">
+
+</style>

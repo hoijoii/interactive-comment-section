@@ -15,10 +15,6 @@ html, body {
   width: 800px;
 }
 
-.comment-com {
-  margin: 12px 0px;
-}
-
 /* ============================================================================= 
 
                                     CommentComponent
@@ -29,6 +25,7 @@ html, body {
   padding: 25px;
   box-sizing: border-box;
   border-radius: 10px;
+  margin: 12px 0px;
 }
 .comment .comment-content {
   display: flex;
@@ -44,6 +41,8 @@ html, body {
   text-align: center;
   padding: 10px;
   border-radius: 8px;
+  min-width: 42.36px;
+  box-sizing: border-box;
 }
 .comment .comment-content .score .score-wrapper svg {
   fill: #C5C6EF;
@@ -58,6 +57,7 @@ html, body {
 }
 .comment .comment-content .content-wrapper {
   margin-left: 20px;
+  box-sizing: border-box;
 }
 .comment .comment-content .content-wrapper .top {
   display: flex;
@@ -88,4 +88,8 @@ html, body {
   display: flex;
   align-items: center;
   margin-top: 10px;
+}
+
+.reply-area {
+  margin-left: 75px;
 }/*# sourceMappingURL=default.css.map */
