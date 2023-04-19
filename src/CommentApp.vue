@@ -10,6 +10,17 @@
         :replies="comment.replies"
       />
     </div>
+    <div class="my-comment comment">
+      <div>
+        <img class="my-profile" :src="require(`@/assets/images/avatars/${commentsStore.currentUser.image.png}`)">
+      </div>
+      <div>
+        <textarea placeholder="Add a comment ..." />
+      </div>
+      <div>
+        <button class="submit-btn">SEND</button>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -19,9 +30,6 @@ import { useCommentsStore } from '@/stores/comments'
 import { IComment, IUser } from './types/comments'
 
 const commentsStore = useCommentsStore()
-
-/* const comments: Array<IComment> = commentsStore.comments
-const currentUser: IUser = commentsStore.currentUser */
 
 </script>
 
