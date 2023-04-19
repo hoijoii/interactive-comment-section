@@ -29,41 +29,44 @@ html, body {
   padding: 25px;
   box-sizing: border-box;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1411764706);
 }
-.comment .content {
+.comment .comment-content {
   display: flex;
 }
-.comment .content .score {
+.comment .comment-content .score {
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 600;
 }
-.comment .content .score .score-wrapper {
+.comment .comment-content .score .score-wrapper {
   background-color: hsl(228, 33%, 97%);
   text-align: center;
   padding: 10px;
   border-radius: 8px;
 }
-.comment .content .score .score-wrapper .num {
+.comment .comment-content .score .score-wrapper svg {
+  fill: #C5C6EF;
+  cursor: pointer;
+}
+.comment .comment-content .score .score-wrapper svg:hover {
+  fill: #5457B6;
+}
+.comment .comment-content .score .score-wrapper .num {
   color: #5457B6;
   padding: 15px 2px;
 }
-.comment .content .content-wrapper {
+.comment .comment-content .content-wrapper {
   margin-left: 20px;
 }
-.comment .content .content-wrapper .top {
+.comment .comment-content .content-wrapper .top {
   display: flex;
   align-items: center;
 }
-.comment .content .content-wrapper .top .profile {
+.comment .comment-content .content-wrapper .top .profile {
   width: 36px;
 }
-.comment .content .content-wrapper .top .created-at {
-  color: hsl(211, 10%, 45%);
-}
-.comment .content .content-wrapper .top .reply-btn {
+.comment .comment-content .content-wrapper .top .reply-btn {
   margin-left: auto;
   border: none;
   background-color: white;
@@ -72,11 +75,16 @@ html, body {
   color: #5457B6;
   cursor: pointer;
 }
-.comment .content .content-wrapper .top .reply-btn:hover {
-  color: hsl(228, 33%, 97%);
-  fill: hsl(228, 33%, 97%);
+.comment .comment-content .content-wrapper .top .reply-btn svg {
+  fill: #5357B6;
 }
-.comment .content .content-wrapper .body {
+.comment .comment-content .content-wrapper .top .reply-btn:hover {
+  color: hsl(239, 57%, 85%);
+}
+.comment .comment-content .content-wrapper .top .reply-btn:hover svg {
+  fill: hsl(239, 57%, 85%);
+}
+.comment .comment-content .content-wrapper .body {
   display: flex;
   align-items: center;
   margin-top: 10px;

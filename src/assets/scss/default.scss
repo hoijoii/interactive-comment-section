@@ -32,9 +32,8 @@ html, body {
   padding: 25px;
   box-sizing: border-box;
   border-radius: 10px;
-  box-shadow: 0 0 10px #00000024;
 
-  .content {
+  .comment-content {
     display: flex;
 
     .score {
@@ -48,6 +47,15 @@ html, body {
         text-align: center;
         padding: 10px;
         border-radius: 8px;
+
+        svg {
+          fill: #C5C6EF;
+          cursor: pointer;
+
+          &:hover {
+            fill:#5457B6;
+          }
+        }
 
         .num {
           color: #5457B6;
@@ -67,10 +75,6 @@ html, body {
           width: 36px;
         }
   
-        .created-at {
-          color: hsl(211, 10%, 45%)
-        }
-  
         .reply-btn {
           margin-left: auto;
           border: none;
@@ -80,9 +84,15 @@ html, body {
           color: #5457B6;
           cursor:pointer;
 
+          svg {
+            fill: #5357B6;
+          }
+
           &:hover {
-            color: hsl(228, 33%, 97%);
-            fill: hsl(228, 33%, 97%);
+            color: hsl(239, 57%, 85%);
+            svg {
+              fill: hsl(239, 57%, 85%);
+            }
           }
         }
       }
