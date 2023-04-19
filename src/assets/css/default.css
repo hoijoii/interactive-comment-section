@@ -1,3 +1,83 @@
-body {
+html, body {
   margin: 0;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: hsl(228, 33%, 97%);
+  font-family: "Rubik", sans-serif;
+  font-size: 16px;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+#container {
+  width: 800px;
+}
+
+.comment-com {
+  margin: 12px 0px;
+}
+
+/* ============================================================================= 
+
+                                    CommentComponent
+
+============================================================================= */
+.comment {
+  background-color: white;
+  padding: 25px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1411764706);
+}
+.comment .content {
+  display: flex;
+}
+.comment .content .score {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+.comment .content .score .score-wrapper {
+  background-color: hsl(228, 33%, 97%);
+  text-align: center;
+  padding: 10px;
+  border-radius: 8px;
+}
+.comment .content .score .score-wrapper .num {
+  color: #5457B6;
+  padding: 15px 2px;
+}
+.comment .content .content-wrapper {
+  margin-left: 20px;
+}
+.comment .content .content-wrapper .top {
+  display: flex;
+  align-items: center;
+}
+.comment .content .content-wrapper .top .profile {
+  width: 36px;
+}
+.comment .content .content-wrapper .top .created-at {
+  color: hsl(211, 10%, 45%);
+}
+.comment .content .content-wrapper .top .reply-btn {
+  margin-left: auto;
+  border: none;
+  background-color: white;
+  font-size: 16px;
+  font-weight: 600;
+  color: #5457B6;
+  cursor: pointer;
+}
+.comment .content .content-wrapper .top .reply-btn:hover {
+  color: hsl(228, 33%, 97%);
+  fill: hsl(228, 33%, 97%);
+}
+.comment .content .content-wrapper .body {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
 }/*# sourceMappingURL=default.css.map */
