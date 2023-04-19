@@ -3,7 +3,7 @@
     <div class="content">
       <div class="score">
         <div class="score-wrapper">
-          <div><inline-svg src="../assets/images/icon-plus.svg" /></div>
+          <div><img src="@/assets/images/icon-plus.svg"></div>
           <div class="num">{{ score }}</div>
           <div><img src="@/assets/images/icon-minus.svg"></div>
         </div>
@@ -29,7 +29,6 @@
 
 <script setup lang='ts'>
 import { ref, Ref, defineProps } from 'vue'
-import InlineSvg from 'vue-inline-svg'
 
 const props = defineProps({
   id: Number,
