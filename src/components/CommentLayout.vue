@@ -11,6 +11,7 @@
       </div>
 
       <div class="content-wrapper">
+
         <div class="top">
           <img :src="require(`@/assets/images/avatars/${user.image.png}`)" class="profile"/>
           <div class="mg-lft13">{{ user.username }}</div>
@@ -33,7 +34,6 @@
               <span class="mg-lft7">Edit</span>
             </button>
           </div>
-
         </div>
 
         <div class="body">
@@ -42,6 +42,7 @@
             {{ content }}
           </div>
         </div>
+        
       </div>
     </div>
   </div>

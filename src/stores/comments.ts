@@ -8,6 +8,8 @@ export const useCommentsStore = defineStore('commentsStore', {
     comments: _.cloneDeep(require('@/assets/data/data.json')).comments as Array<IComment>
   }),
   actions: {
-    
+    addComment(comment: IComment) {
+      this.comments.push(comment)
+    }
   }
 })
