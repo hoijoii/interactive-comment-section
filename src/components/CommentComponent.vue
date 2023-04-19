@@ -8,43 +8,20 @@
         :user="user"
       />
     </div>
-    <div class="reply-area" v-if="replies.length !== 0">
+    <div class="wrapper">
+      <div class="reply-area" v-if="replies.length !== 0">
         <comment-layout 
-          v-for="(reply, idx) in replies" :key="idx"
-          :content="reply.content"
-          :createdAt="reply.createdAt"
-          :score="reply.score"
-          :user="reply.user"
-          class="comment"
-        />
-        
+            v-for="(reply, idx) in replies" :key="idx"
+            :content="reply.content"
+            :createdAt="reply.createdAt"
+            :score="reply.score"
+            :user="reply.user"
+            :replyingTo="reply.replyingTo"
+            :isReply="true"
+            class="comment"
+          />
+      </div>
     </div>
-    
-    <!-- <div class="comment-content">
-      <div class="score">
-        <div class="score-wrapper">
-          <inline-svg :src="require('@/assets/images/icon-plus.svg')"/>
-          <div class="num">{{ score }}</div>
-          <inline-svg :src="require('@/assets/images/icon-minus.svg')"/>
-        </div>
-      </div>
-      <div class="content-wrapper">
-        <div class="top">
-          <img :src="require(`@/assets/images/avatars/${user.image.png}`)" class="profile"/>
-          <div class="mg-lft13">{{ user.username }}</div>
-          <div class="mg-lft13 grayish-blue">{{ createdAt }}</div>
-          <div class="reply mg-auto" v-if="user.username !== commentsStore.currentUser.username">
-            <button class="reply-btn">
-              <inline-svg :src="require('@/assets/images/icon-reply.svg')" />
-              <span class="mg-lft7">Reply</span>
-            </button>
-          </div>
-        </div>
-        <div class="body">
-          <div class="text grayish-blue">{{ content }}</div>
-        </div>
-      </div>
-    </div> -->
   </div>
 </template>
 

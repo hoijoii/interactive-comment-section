@@ -3,7 +3,8 @@ html, body {
   position:relative;
   display: flex;
   justify-content: center;
-  align-items: center;
+  //align-items: center;
+  margin-top: 30px;
   background-color: hsl(228, 33%, 97%);
   font-family: 'Rubik', sans-serif;
   font-size: 16px;
@@ -18,7 +19,7 @@ html, body {
 
 /* ============================================================================= 
 
-                                    CommentComponent
+                                    CommentLayout
 
 ============================================================================= */
 
@@ -74,27 +75,6 @@ html, body {
         .profile {
           width: 36px;
         }
-  
-        .reply-btn {
-          margin-left: auto;
-          border: none;
-          background-color: white;
-          font-size: 16px;
-          font-weight: 600;
-          color: #5457B6;
-          cursor:pointer;
-
-          svg {
-            fill: #5357B6;
-          }
-
-          &:hover {
-            color: hsl(239, 57%, 85%);
-            svg {
-              fill: hsl(239, 57%, 85%);
-            }
-          }
-        }
       }
 
       .body {
@@ -107,6 +87,35 @@ html, body {
   }
 }
 
+.wrapper {
+  margin-left: 30px;
+  border-left: 2px solid hsl(223, 19%, 93%)
+}
+
 .reply-area {
-  margin-left: 75px;
+  margin-left: 35px;
+
+  .reply-space{
+    //border-left: 1px solid gray;
+  }
+
+  .delete {
+    color: #ED6468;
+
+    svg {
+      fill: #ED6468;
+    }
+
+    &:hover {
+      color: hsla(358, 79%, 66%, 0.507);
+      svg {
+        fill: hsla(358, 79%, 66%, 0.507);
+      }
+    }
+  }
+
+  .replying-to {
+    color: #5457B6;
+    font-weight: 500;
+  }
 }

@@ -3,7 +3,7 @@ html, body {
   position: relative;
   display: flex;
   justify-content: center;
-  align-items: center;
+  margin-top: 30px;
   background-color: hsl(228, 33%, 97%);
   font-family: "Rubik", sans-serif;
   font-size: 16px;
@@ -17,7 +17,7 @@ html, body {
 
 /* ============================================================================= 
 
-                                    CommentComponent
+                                    CommentLayout
 
 ============================================================================= */
 .comment {
@@ -66,30 +66,33 @@ html, body {
 .comment .comment-content .content-wrapper .top .profile {
   width: 36px;
 }
-.comment .comment-content .content-wrapper .top .reply-btn {
-  margin-left: auto;
-  border: none;
-  background-color: white;
-  font-size: 16px;
-  font-weight: 600;
-  color: #5457B6;
-  cursor: pointer;
-}
-.comment .comment-content .content-wrapper .top .reply-btn svg {
-  fill: #5357B6;
-}
-.comment .comment-content .content-wrapper .top .reply-btn:hover {
-  color: hsl(239, 57%, 85%);
-}
-.comment .comment-content .content-wrapper .top .reply-btn:hover svg {
-  fill: hsl(239, 57%, 85%);
-}
 .comment .comment-content .content-wrapper .body {
   display: flex;
   align-items: center;
   margin-top: 10px;
 }
 
+.wrapper {
+  margin-left: 30px;
+  border-left: 2px solid hsl(223, 19%, 93%);
+}
+
 .reply-area {
-  margin-left: 75px;
+  margin-left: 35px;
+}
+.reply-area .delete {
+  color: #ED6468;
+}
+.reply-area .delete svg {
+  fill: #ED6468;
+}
+.reply-area .delete:hover {
+  color: hsla(358, 79%, 66%, 0.507);
+}
+.reply-area .delete:hover svg {
+  fill: hsla(358, 79%, 66%, 0.507);
+}
+.reply-area .replying-to {
+  color: #5457B6;
+  font-weight: 500;
 }/*# sourceMappingURL=default.css.map */

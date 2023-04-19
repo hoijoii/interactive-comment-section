@@ -16,4 +16,22 @@
 
 .grayish-blue {
   color: hsl(211, 10%, 45%);
+}
+
+.top-btn {
+  border: none;
+  background-color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #5457B6;
+}
+.top-btn svg {
+  fill: #5457B6;
+}
+.top-btn:hover {
+  color: hsl(239, 57%, 85%);
+}
+.top-btn:hover svg {
+  fill: hsl(239, 57%, 85%);
 }/*# sourceMappingURL=commons.css.map */
