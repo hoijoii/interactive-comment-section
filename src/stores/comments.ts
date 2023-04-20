@@ -10,6 +10,8 @@ export const useCommentsStore = defineStore('commentsStore', {
   actions: {
     addComment(comment: IComment) {
       this.comments.push(comment)
+
+      console.log(this.comments)
     }
   }
 })

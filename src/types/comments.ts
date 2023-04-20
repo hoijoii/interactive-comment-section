@@ -30,5 +30,4 @@ export declare interface IReplies {
     score: number
     replyingTo: string
     user: IUser
-    edityn?: boolean
 }

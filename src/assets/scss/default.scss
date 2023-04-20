@@ -70,18 +70,35 @@ html, body {
     .content-wrapper{
       margin-left: 20px;
       box-sizing: border-box;
+      width: 100%;
 
       .top {
         display: flex;
         align-items: center;
-  
-        
+
+        .name {
+          font-weight: 500;
+        }
+
+        .you {
+          background-color: #5457B6;
+          color: white;
+          font-weight: 500;
+          padding: 2px 7px;
+          border-radius: 3px;
+
+          font-size: 15px;
+        }
       }
 
       .body {
         display: flex;
         align-items: center;
         margin-top: 10px;
+
+        .text {
+          word-break: break-word;
+        }
       }
     }
     

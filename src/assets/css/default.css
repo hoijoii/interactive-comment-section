@@ -60,15 +60,30 @@ html, body {
 .comment .comment-content .content-wrapper {
   margin-left: 20px;
   box-sizing: border-box;
+  width: 100%;
 }
 .comment .comment-content .content-wrapper .top {
   display: flex;
   align-items: center;
 }
+.comment .comment-content .content-wrapper .top .name {
+  font-weight: 500;
+}
+.comment .comment-content .content-wrapper .top .you {
+  background-color: #5457B6;
+  color: white;
+  font-weight: 500;
+  padding: 2px 7px;
+  border-radius: 3px;
+  font-size: 15px;
+}
 .comment .comment-content .content-wrapper .body {
   display: flex;
   align-items: center;
   margin-top: 10px;
+}
+.comment .comment-content .content-wrapper .body .text {
+  word-break: break-word;
 }
 
 .wrapper {

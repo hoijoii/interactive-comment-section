@@ -14,7 +14,8 @@
 
         <div class="top">
           <img :src="require(`@/assets/images/avatars/${user.image.png}`)" class="profile"/>
-          <div class="mg-lft13">{{ user.username }}</div>
+          <div class="mg-lft13 name">{{ user.username }}</div>
+          <div v-if="user.username === commentsStore.currentUser.username" class="mg-lft13 you">you</div>
           <div class="mg-lft13 grayish-blue">{{ createdAt }}</div>
 
           <!-- buttons -->

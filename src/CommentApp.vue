@@ -15,10 +15,10 @@
         <img class="my-profile" :src="require(`@/assets/images/avatars/${commentsStore.currentUser.image.png}`)">
       </div>
       <div>
-        <textarea placeholder="Add a comment ..." v-model="content"/>
+        <textarea placeholder="Add a comment ..." v-model="newContent"/>
       </div>
       <div>
-        <button class="submit-btn">SEND</button>
+        <button class="submit-btn" @click="submit">SEND</button>
       </div>
     </div>
   </div>
@@ -28,31 +28,35 @@
 import CommentComponent from '@/components/CommentComponent.vue'
 import { useCommentsStore } from '@/stores/comments'
 import { onMounted, reactive, ref, Ref } from 'vue'
-import { IComment, IUser } from './types/comments'
+import { IComment, IUser, IReplies } from './types/comments'
 import moment from 'moment'
 import StringUtils from '@/utils/string-utils'
 
+// pinia stores
 const commentsStore = useCommentsStore()
-const comments = commentsStore.comments
 
-const content: Ref<string> = ref('')
-const newComment = reactive({
-  id: comments.indexOf(comments[comments.length]) + 1,
-  content: '',
-  createdAt: moment(),
-
-})
-
-const submit = () => {
-  
-}
-
+// filters
 const setDateFormat = (date: string) => {
   return StringUtils.dateFormat(date)
 }
 
+const newContent: Ref<string> = ref('')
+
+const submit = () => {
+  let newComment : IComment = {
+    id: commentsStore.comments[commentsStore.comments.length-1].id + 1,
+    content: newContent.value,
+    createdAt: moment().format('YYYY-MM-DD HH:mm'),
+    score: 0,
+    user: commentsStore.currentUser,
+    replies: []
+  }
+
+  commentsStore.addComment(newComment)
+  newContent.value = ''
+} 
+
 onMounted(()=>{
-  setDateFormat('2020')
 })
 
 </script>
