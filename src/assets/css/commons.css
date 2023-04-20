@@ -11,7 +11,7 @@
 }
 
 .mg-auto {
-  margin-left: auto;
+  margin-left: auto !important;
 }
 
 .grayish-blue {

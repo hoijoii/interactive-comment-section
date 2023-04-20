@@ -93,27 +93,23 @@ html, body {
   border-left: 2px solid hsl(223, 19%, 93%);
 }
 
+.delete {
+  color: #ED6468 !important;
+
+  svg {
+    fill: #ED6468 !important;
+  }
+
+  &:hover {
+    color: hsla(358, 79%, 66%, 0.507) !important;
+    svg {
+      fill: hsla(358, 79%, 66%, 0.507) !important;
+    }
+  }
+}
+
 .reply-area {
   margin-left: 35px;
-
-  .reply-space{
-    //border-left: 1px solid gray;
-  }
-
-  .delete {
-    color: #ED6468;
-
-    svg {
-      fill: #ED6468;
-    }
-
-    &:hover {
-      color: hsla(358, 79%, 66%, 0.507);
-      svg {
-        fill: hsla(358, 79%, 66%, 0.507);
-      }
-    }
-  }
 
   .replying-to {
     color: #5457B6;
@@ -122,7 +118,6 @@ html, body {
 }
 
 .my-comment {
-
   display: flex;
   justify-content: space-between;
 

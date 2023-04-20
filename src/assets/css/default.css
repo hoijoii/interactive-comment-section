@@ -76,20 +76,21 @@ html, body {
   border-left: 2px solid hsl(223, 19%, 93%);
 }
 
+.delete {
+  color: #ED6468 !important;
+}
+.delete svg {
+  fill: #ED6468 !important;
+}
+.delete:hover {
+  color: hsla(358, 79%, 66%, 0.507) !important;
+}
+.delete:hover svg {
+  fill: hsla(358, 79%, 66%, 0.507) !important;
+}
+
 .reply-area {
   margin-left: 35px;
-}
-.reply-area .delete {
-  color: #ED6468;
-}
-.reply-area .delete svg {
-  fill: #ED6468;
-}
-.reply-area .delete:hover {
-  color: hsla(358, 79%, 66%, 0.507);
-}
-.reply-area .delete:hover svg {
-  fill: hsla(358, 79%, 66%, 0.507);
 }
 .reply-area .replying-to {
   color: #5457B6;
