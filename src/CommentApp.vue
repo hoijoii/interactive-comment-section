@@ -27,19 +27,33 @@
 <script lang="ts" setup>
 import CommentComponent from '@/components/CommentComponent.vue'
 import { useCommentsStore } from '@/stores/comments'
-import { reactive, ref, Ref } from 'vue'
+import { onMounted, reactive, ref, Ref } from 'vue'
 import { IComment, IUser } from './types/comments'
+import moment from 'moment'
+import StringUtils from '@/utils/string-utils'
 
 const commentsStore = useCommentsStore()
+const comments = commentsStore.comments
 
 const content: Ref<string> = ref('')
-const commenter = reactive({
-  
+const newComment = reactive({
+  id: comments.indexOf(comments[comments.length]) + 1,
+  content: '',
+  createdAt: moment(),
+
 })
 
 const submit = () => {
   
 }
+
+const setDateFormat = (date: string) => {
+  return StringUtils.dateFormat(date)
+}
+
+onMounted(()=>{
+  setDateFormat('2020')
+})
 
 </script>
 
