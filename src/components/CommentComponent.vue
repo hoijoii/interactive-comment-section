@@ -7,13 +7,13 @@
         :score="score"
         :user="user"
         ref="refEditContent"
-        @update="updateComment(id+1, edit)"
+        @update="updateComment(id+1, edit())"
       />
     </div>
     <div class="wrapper">
       <div class="reply-area" v-if="replies.length !== 0">
-        <comment-layout 
-            v-for="(reply, idx) in replies" :key="idx"
+        <div v-for="(reply, idx) in replies" :key="idx">
+          <comment-layout 
             :content="reply.content"
             :createdAt="reply.createdAt"
             :score="reply.score"
@@ -21,9 +21,10 @@
             :replyingTo="reply.replyingTo"
             :isReply="true"
             ref="refEditContent"
-            @update="updateComment()"
+            @update="updateComment(id+1, '', reply.id, edit(reply.id))"
             class="comment"
           />
+        </div>
       </div>
     </div>
   </div>
@@ -31,9 +32,9 @@
 
 <script setup lang='ts'>
 import { ref, Ref, defineProps, computed } from 'vue'
-import InlineSvg from 'vue-inline-svg'
 import { useCommentsStore } from '@/stores/comments'
 import CommentLayout from './CommentLayout.vue'
+import _ from 'lodash'
 
 const commentsStore = useCommentsStore()
 
@@ -63,15 +64,13 @@ const props = defineProps({
     }]
   }
 })
-
-const testEmit = () => {
-  console.log('emit')
+const edit = (reply_id?:number): string =>{
+  // if comment component is case of reply, refEditContent is Array => [ {editContent: ''}, {editContent: ''} ]
+  return refEditContent.value.editContent ? refEditContent.value.editContent
+                                        : refEditContent.value[_.findIndex(props.replies, { 'id': reply_id })].editContent
 }
 
-const edit = computed(() => refEditContent.value.editContent)
-
 const updateComment = (comment_id: number, comment_content?: string, reply_id?: number, reply_content?: string) => {
-  console.log('component: ', comment_content)
   commentsStore.updateComment(comment_id, comment_content, reply_id, reply_content)
 }
 

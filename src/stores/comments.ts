@@ -14,13 +14,14 @@ export const useCommentsStore = defineStore('commentsStore', {
 
     updateComment(comment_id: number, comment_content?: string, reply_id?: number, reply_content?: string) {
       let comment : IComment | any = _.find(this.comments, { 'id': comment_id })
-      console.log('getComment: ', comment)
-      console.log('content: ', comment_content)
+      console.log('store getComment: ', comment)
+      console.log('store content: ', reply_content)
 
       if (comment_content) {
         comment.content = comment_content
       }
       if (reply_content) {
+        console.log('=============store reply_content arrived==========')
         let reply : IReplies = _.find(comment.replies, { 'id' : reply_id })
         reply.content = reply_content
       }

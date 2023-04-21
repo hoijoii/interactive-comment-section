@@ -38,14 +38,17 @@
         </div>
 
         <div class="body">
+
           <div v-if="!editActive" class="text grayish-blue">
             <span v-if="replyingTo" class="replying-to">@{{ replyingTo }}</span>
             {{ content }}
           </div>
+
           <div v-else-if="editActive" class="edit-input">
             <textarea class="edit-area" v-model="editContent"/>
             <button class="submit-btn update mg-auto" @click="updateBtn(editContent)">UPDATE</button>
           </div>
+
         </div>
         
       </div>
@@ -85,10 +88,10 @@ defineExpose({
 const emit = defineEmits(['update'])
 
 const updateBtn = (editContent : string) => {
-  emit('update', editContent)
+  console.log(editContent)
+  emit('update')
   editActive.value = false
 }
-
 
 </script>
 
