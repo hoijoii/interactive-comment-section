@@ -23,6 +23,7 @@
             :isReply="true"
             ref="refEditContent"
             @update="updateComment(id+1, '', reply.id, edit(reply.id))"
+            @delete="deleteComment(id+1, reply.id)"
             class="comment"
           />
         </div>
@@ -75,8 +76,8 @@ const updateComment = (comment_id: number, comment_content?: string, reply_id?: 
   commentsStore.updateComment(comment_id, comment_content, reply_id, reply_content)
 }
 
-const deleteComment = (comment_id: number) => {
-  commentsStore.deleteComment(comment_id)
+const deleteComment = (comment_id: number, reply_id?: number) => {
+  commentsStore.deleteComment(comment_id, reply_id)
 }
 
 </script>
