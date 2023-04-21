@@ -21,11 +21,16 @@ export const useCommentsStore = defineStore('commentsStore', {
         comment.content = comment_content
       }
       if (reply_content) {
-        console.log('=============store reply_content arrived==========')
         let reply : IReplies = _.find(comment.replies, { 'id' : reply_id })
         reply.content = reply_content
       }
       console.log(this.comments)
+    },
+
+    deleteComment(comment_id: number) {
+      console.log('trying to delete')
+      let comment_idx : number = _.findIndex(this.comments, { 'id': comment_id })
+      this.comments.splice(comment_idx, 1)
     }
   }
 })

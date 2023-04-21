@@ -8,6 +8,7 @@
         :user="user"
         ref="refEditContent"
         @update="updateComment(id+1, edit())"
+        @delete="deleteComment(id+1)"
       />
     </div>
     <div class="wrapper">
@@ -72,6 +73,10 @@ const edit = (reply_id?:number): string =>{
 
 const updateComment = (comment_id: number, comment_content?: string, reply_id?: number, reply_content?: string) => {
   commentsStore.updateComment(comment_id, comment_content, reply_id, reply_content)
+}
+
+const deleteComment = (comment_id: number) => {
+  commentsStore.deleteComment(comment_id)
 }
 
 </script>

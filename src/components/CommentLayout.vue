@@ -26,7 +26,7 @@
             </button>
           </div>
           <div class="my-btn mg-auto" v-else>
-            <button class="delete top-btn">
+            <button class="delete top-btn" @click="deleteBtn">
               <inline-svg :src="require('@/assets/images/icon-delete.svg')" />
               <span class="mg-lft7">Delete</span>
             </button>
@@ -85,12 +85,15 @@ defineExpose({
   editContent,
 })
 
-const emit = defineEmits(['update'])
+const emit = defineEmits(['update', 'delete'])
 
 const updateBtn = (editContent : string) => {
-  console.log(editContent)
   emit('update')
   editActive.value = false
+}
+
+const deleteBtn = () => {
+  emit('delete')
 }
 
 </script>
