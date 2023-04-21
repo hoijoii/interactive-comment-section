@@ -6,6 +6,8 @@
         :createdAt="createdAt"
         :score="score"
         :user="user"
+        ref="refEditContent"
+        @update="updateComment(id+1, edit)"
       />
     </div>
     <div class="wrapper">
@@ -18,6 +20,8 @@
             :user="reply.user"
             :replyingTo="reply.replyingTo"
             :isReply="true"
+            ref="refEditContent"
+            @update="updateComment()"
             class="comment"
           />
       </div>
@@ -26,12 +30,14 @@
 </template>
 
 <script setup lang='ts'>
-import { ref, Ref, defineProps } from 'vue'
+import { ref, Ref, defineProps, computed } from 'vue'
 import InlineSvg from 'vue-inline-svg'
 import { useCommentsStore } from '@/stores/comments'
 import CommentLayout from './CommentLayout.vue'
 
 const commentsStore = useCommentsStore()
+
+const refEditContent: Ref<any> = ref(null)
 
 const props = defineProps({
   id: Number,
@@ -58,5 +64,15 @@ const props = defineProps({
   }
 })
 
+const testEmit = () => {
+  console.log('emit')
+}
+
+const edit = computed(() => refEditContent.value.editContent)
+
+const updateComment = (comment_id: number, comment_content?: string, reply_id?: number, reply_content?: string) => {
+  console.log('component: ', comment_content)
+  commentsStore.updateComment(comment_id, comment_content, reply_id, reply_content)
+}
 
 </script>

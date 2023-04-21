@@ -119,9 +119,10 @@ html, body {
 .my-comment .my-profile {
   width: 48px;
 }
-.my-comment textarea {
+
+textarea {
   width: 570px;
-  height: 80px;
+  min-height: 80px;
   border: 2px solid hsl(223, 19%, 93%);
   border-radius: 10px;
   font-size: 16px;
@@ -130,7 +131,19 @@ html, body {
   resize: none;
   font-family: "Rubik", sans-serif;
 }
-.my-comment textarea:focus {
+textarea:focus {
   outline: 1px solid #5457B6;
   border: 1px solid #5457B6;
+}
+
+.edit-input {
+  width: 100%;
+}
+.edit-input .edit-area {
+  width: 100%;
+}
+
+.update {
+  margin-top: 14px;
+  display: flex;
 }/*# sourceMappingURL=default.css.map */

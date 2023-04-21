@@ -18,7 +18,7 @@
         <textarea placeholder="Add a comment ..." v-model="newContent"/>
       </div>
       <div>
-        <button class="submit-btn" @click="submit">SEND</button>
+        <button class="submit-btn" @click="sendComment">SEND</button>
       </div>
     </div>
   </div>
@@ -42,7 +42,7 @@ const setDateFormat = (date: string) => {
 
 const newContent: Ref<string> = ref('')
 
-const submit = () => {
+const sendComment = () => {
   let newComment : IComment = {
     id: commentsStore.comments[commentsStore.comments.length-1].id + 1,
     content: newContent.value,

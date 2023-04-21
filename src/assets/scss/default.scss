@@ -141,21 +141,35 @@ html, body {
   .my-profile {
     width: 48px;
   }
+}
 
-  textarea {
-    width: 570px;
-    height: 80px;
-    border: 2px solid hsl(223, 19%, 93%);
-    border-radius: 10px;
-    font-size: 16px;
-    padding: 10px 20px;
-    box-sizing: border-box;
-    resize: none;
-    font-family: 'Rubik', sans-serif;
-    
-    &:focus {
-      outline: 1px solid #5457B6;
-      border: 1px solid #5457B6;
-    }
+textarea {
+  width: 570px;
+  min-height: 80px;
+  border: 2px solid hsl(223, 19%, 93%);
+  border-radius: 10px;
+  font-size: 16px;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  resize: none;
+  font-family: 'Rubik', sans-serif;
+  
+  &:focus {
+    outline: 1px solid #5457B6;
+    border: 1px solid #5457B6;
   }
+}
+
+.edit-input {
+  width: 100%;
+
+  .edit-area {
+    width: 100%;
+  }
+}
+
+
+.update {
+  margin-top: 14px;
+  display: flex;
 }
