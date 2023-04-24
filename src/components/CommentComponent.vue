@@ -8,7 +8,7 @@
         :user="user"
         ref="refEditContent"
         @update="updateComment(id+1, edit())"
-        @delete="deleteComment(id+1)"
+        @delete="deleteComment()"
       />
     </div>
     <div class="wrapper">
@@ -67,7 +67,7 @@ const props = defineProps({
   }
 })
 const edit = (reply_id?:number): string =>{
-  // if comment component is case of reply, refEditContent is Array => [ {editContent: ''}, {editContent: ''} ]
+  // If comment component is case of reply, refEditContent is Array => [ {editContent: ''}, {editContent: ''} ]
   return refEditContent.value.editContent ? refEditContent.value.editContent
                                         : refEditContent.value[_.findIndex(props.replies, { 'id': reply_id })].editContent
 }
@@ -76,8 +76,10 @@ const updateComment = (comment_id: number, comment_content?: string, reply_id?: 
   commentsStore.updateComment(comment_id, comment_content, reply_id, reply_content)
 }
 
-const deleteComment = (comment_id: number, reply_id?: number) => {
-  commentsStore.deleteComment(comment_id, reply_id)
+// Delete action is in AlertComponent.vue
+const deleteComment = (comment_id:number, reply_id?:number) => {
+  commentsStore.deletePopup = true
+  commentsStore.target = { comment_id: comment_id, reply_id: reply_id }
 }
 
 </script>

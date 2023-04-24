@@ -5,13 +5,14 @@ import { IComment, IComments, IReplies, IUser } from '@/types/comments'
 export const useCommentsStore = defineStore('commentsStore', {
   state: () => ({
     currentUser: _.cloneDeep(require('@/assets/data/data.json')).currentUser as IUser,
-    comments: _.cloneDeep(require('@/assets/data/data.json')).comments as Array<IComment>
+    comments: _.cloneDeep(require('@/assets/data/data.json')).comments as Array<IComment>,
+    target: { 
+      comment_id: 0,
+      reply_id: 0
+    } as any,
+    deletePopup : false
   }),
   actions: {
-    findComment(comment_id : number) {
-      return _.find(this.comments, { 'id': comment_id })
-    },
-    
     addComment(comment: IComment) {
       this.comments.push(comment)
     },
@@ -28,14 +29,26 @@ export const useCommentsStore = defineStore('commentsStore', {
       }
     },
 
-    deleteComment(comment_id: number, reply_id?: number) {
-      let comment : IComment | any = this.findComment(comment_id)
+    deleteComment() {
+      let comment : IComment | any = this.findComment(this.target.comment_id)
+      console.log(comment)
       
-      if (!reply_id) this.comments.splice(comment.id-1, 1)
+      if (!this.target.reply_id) this.comments.splice(comment.id-1, 1)
       else {
-        let replyIdx : number = _.findIndex(comment.replies, { 'id': reply_id })
+        let replyIdx : number = _.findIndex(comment.replies, { 'id': this.target.reply_id })
         comment.replies.splice(replyIdx, 1)
       }
+
+      console.log(this.comments)
+    },
+
+    // utils
+    findComment(comment_id : number) {
+      return _.find(this.comments, { 'id': comment_id })
+    },
+
+    resetTarget() {
+      this.target = { comment_id: 0, reply_id: 0 }
     }
   }
 })

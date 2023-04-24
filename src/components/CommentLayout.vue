@@ -93,7 +93,7 @@ const updateBtn = (editContent : string) => {
 }
 
 const deleteBtn = () => {
-  emit('delete')
+  emit('delete') 
 }
 
 </script>

@@ -8,7 +8,7 @@
       </div>
       <div class="btns">
         <button class="no">NO, CANCEL</button>
-        <button class="yes" @click="commentsStore.deletePopup = false">YES, DELETE</button>
+        <button class="yes" @click="deleteComment">YES, DELETE</button>
       </div>
     </div>
   </div>

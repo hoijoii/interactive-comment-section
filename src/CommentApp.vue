@@ -1,6 +1,9 @@
 <template>
-  <div id="container">
-    <div class="mg-tb12" v-for="(comment, idx) in commentsStore.comments" :key="idx">
+  <div id="alert" v-if="commentsStore.deletePopup">
+    <alert-component />
+  </div>
+  <div id="container">    
+    <div class="comment-list mg-tb12" v-for="(comment, idx) in commentsStore.comments" :key="idx">
       <comment-component 
         :id="idx"
         :content="comment.content"
@@ -10,7 +13,7 @@
         :replies="comment.replies"
       />
     </div>
-    <div class="my-comment comment">
+    <div class="my-comment comment input">
       <div class="image">
         <img class="my-profile" :src="require(`@/assets/images/avatars/${commentsStore.currentUser.image.png}`)">
       </div>
@@ -26,6 +29,7 @@
 
 <script lang="ts" setup>
 import CommentComponent from '@/components/CommentComponent.vue'
+import AlertComponent from '@/components/AlertComponent.vue'
 import { useCommentsStore } from '@/stores/comments'
 import { onMounted, reactive, ref, Ref } from 'vue'
 import { IComment, IUser, IReplies } from './types/comments'
