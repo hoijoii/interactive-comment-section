@@ -173,3 +173,78 @@ textarea {
   margin-top: 14px;
   display: flex;
 }
+
+
+/* ============================================================================= 
+
+                                    Alert Component
+
+============================================================================= */
+
+#app {
+  overflow-x: hidden;
+}
+
+#alert {
+  top: 0;
+  position: fixed;
+  background-color: rgba(0,0,0,0.5);
+  width: 100vw;
+  height: 100vh;
+  left: calc(-50vw + 50%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.msg {
+  width: 320px;
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+
+  .title {
+    font-weight: 500;
+    font-size: 24px;
+    color: hsl(212, 24%, 26%);
+    margin-bottom: 13px;
+  }
+
+  .warning {
+    line-height: 25px;
+  }
+
+  .btns {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 18px;
+  }
+
+  .no, .yes {
+    font-family: 'Rubik', sans-serif;
+    font-weight: 500;
+    color: white;
+    padding: 13px 30px;
+    border-radius: 6px;
+    cursor: pointer;
+
+    border: none;
+  }
+
+  .no {
+    background-color: hsl(211, 10%, 45%);
+
+    &:hover {
+      background-color: hsla(211, 10%, 45%, 0.671);
+    }
+  }
+
+  .yes {
+    background-color: #ED6468;
+
+    &:hover {
+      background-color: #ed64699d;
+    }
+  }
+}

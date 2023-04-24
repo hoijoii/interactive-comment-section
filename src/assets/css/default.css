@@ -146,4 +146,67 @@ textarea:focus {
 .update {
   margin-top: 14px;
   display: flex;
+}
+
+/* ============================================================================= 
+
+                                    Alert Component
+
+============================================================================= */
+#app {
+  overflow-x: hidden;
+}
+
+#alert {
+  top: 0;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100vw;
+  height: 100vh;
+  left: calc(-50vw + 50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.msg {
+  width: 320px;
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+}
+.msg .title {
+  font-weight: 500;
+  font-size: 24px;
+  color: hsl(212, 24%, 26%);
+  margin-bottom: 13px;
+}
+.msg .warning {
+  line-height: 25px;
+}
+.msg .btns {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 18px;
+}
+.msg .no, .msg .yes {
+  font-family: "Rubik", sans-serif;
+  font-weight: 500;
+  color: white;
+  padding: 13px 30px;
+  border-radius: 6px;
+  cursor: pointer;
+  border: none;
+}
+.msg .no {
+  background-color: hsl(211, 10%, 45%);
+}
+.msg .no:hover {
+  background-color: hsla(211, 10%, 45%, 0.671);
+}
+.msg .yes {
+  background-color: #ED6468;
+}
+.msg .yes:hover {
+  background-color: rgba(237, 100, 105, 0.6156862745);
 }/*# sourceMappingURL=default.css.map */
