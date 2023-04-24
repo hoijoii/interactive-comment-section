@@ -7,7 +7,7 @@
         This will remove the comment and can't be undone.
       </div>
       <div class="btns">
-        <button class="no">NO, CANCEL</button>
+        <button class="no" @click="commentsStore.deletePopup=false">NO, CANCEL</button>
         <button class="yes" @click="deleteComment">YES, DELETE</button>
       </div>
     </div>
