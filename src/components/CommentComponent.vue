@@ -9,6 +9,8 @@
         ref="refEditContent"
         @update="updateComment(id+1, edit())"
         @delete="deleteComment()"
+        @plus="updateScore('plus', id+1)"
+        @minus="updateScore('minus', id+1)"
       />
     </div>
     <div class="wrapper">
@@ -24,6 +26,8 @@
             ref="refEditContent"
             @update="updateComment(id+1, '', reply.id, edit(reply.id))"
             @delete="deleteComment(id+1, reply.id)"
+            @plus="updateScore('plus', id+1, reply.id)"
+            @minus="updateScore('minus', id+1, reply.id)"
             class="comment"
           />
         </div>
@@ -80,6 +84,10 @@ const updateComment = (comment_id: number, comment_content?: string, reply_id?: 
 const deleteComment = (comment_id:number, reply_id?:number) => {
   commentsStore.deletePopup = true
   commentsStore.target = { comment_id: comment_id, reply_id: reply_id }
+}
+
+const updateScore = (operate:string, comment_id:number, reply_id?:number) => {
+  commentsStore.pmScore(operate, comment_id, reply_id)
 }
 
 </script>

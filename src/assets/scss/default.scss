@@ -43,6 +43,12 @@ html, body {
       justify-content: center;
       font-weight: 600;
 
+      // no drag
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-use-select: none;
+      user-select: none;
+
       .score-wrapper {
         background-color: hsl(228, 33%, 97%);
         text-align: center;

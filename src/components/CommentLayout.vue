@@ -4,9 +4,9 @@
 
       <div class="score">
         <div class="score-wrapper">
-          <inline-svg :src="require('@/assets/images/icon-plus.svg')" />
+          <inline-svg :src="require('@/assets/images/icon-plus.svg')" @click="emit('plus')" />
           <div class="num">{{ score }}</div>
-          <inline-svg :src="require('@/assets/images/icon-minus.svg')"/>
+          <inline-svg :src="require('@/assets/images/icon-minus.svg')" @click="emit('minus')"/>
         </div>
       </div>
 
@@ -78,6 +78,11 @@ const props = defineProps({
   isReply: Boolean
 })
 
+/* const scoreBtn = () => {
+  commentsStore.target = { comment_id:  }
+  commentsStore.pmScore
+} */
+
 const editActive : Ref<boolean> = ref(false)
 const editContent : Ref<string | any> = ref(props.content)
 
@@ -85,7 +90,7 @@ defineExpose({
   editContent,
 })
 
-const emit = defineEmits(['update', 'delete'])
+const emit = defineEmits(['plus', 'minus', 'update', 'delete'])
 
 const updateBtn = (editContent : string) => {
   emit('update')
