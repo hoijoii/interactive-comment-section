@@ -25,7 +25,7 @@
             :isReply="true"
             ref="refEditContent"
             @update="updateComment(id+1, '', reply.id, edit(reply.id))"
-            @delete="deleteComment(id+1, reply.id)"
+            @delete="deleteComment(reply.id)"
             @plus="updateScore('plus', id+1, reply.id)"
             @minus="updateScore('minus', id+1, reply.id)"
             class="comment"
@@ -81,9 +81,9 @@ const updateComment = (comment_id: number, comment_content?: string, reply_id?: 
 }
 
 // Delete action is in AlertComponent.vue
-const deleteComment = (comment_id:number, reply_id?:number) => {
+const deleteComment = (reply_id?:number) => {
   commentsStore.deletePopup = true
-  commentsStore.target = { comment_id: comment_id, reply_id: reply_id }
+  commentsStore.target = { comment_id: props.id+1, reply_id: reply_id }
 }
 
 const updateScore = (operate:string, comment_id:number, reply_id?:number) => {
