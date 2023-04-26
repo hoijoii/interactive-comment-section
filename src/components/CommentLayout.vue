@@ -20,7 +20,7 @@
 
           <!-- buttons -->
           <div class="reply mg-auto" v-if="user.username !== commentsStore.currentUser.username">
-            <button class="reply-btn top-btn">
+            <button class="reply-btn top-btn" @click="replyBtn">
               <inline-svg :src="require('@/assets/images/icon-reply.svg')" />
               <span class="mg-lft7">Reply</span>
             </button>
@@ -51,6 +51,10 @@
 
         </div>
         
+      </div>
+
+      <div>
+
       </div>
     </div>
   </div>
@@ -90,7 +94,7 @@ defineExpose({
   editContent,
 })
 
-const emit = defineEmits(['plus', 'minus', 'update', 'delete'])
+const emit = defineEmits(['plus', 'minus', 'update', 'delete', 'reply'])
 
 const updateBtn = (editContent : string) => {
   emit('update')
@@ -99,6 +103,11 @@ const updateBtn = (editContent : string) => {
 
 const deleteBtn = () => {
   emit('delete') 
+}
+
+const replyBtn = () => {
+  commentsStore.commenter = props.user.username
+  emit('reply')
 }
 
 </script>

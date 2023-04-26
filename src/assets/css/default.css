@@ -140,6 +140,10 @@ textarea:focus {
   border: 1px solid #5457B6;
 }
 
+.add-reply textarea {
+  width: 505px;
+}
+
 .edit-input {
   width: 100%;
 }

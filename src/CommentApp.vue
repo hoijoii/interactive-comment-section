@@ -17,7 +17,7 @@
       <div class="image">
         <img class="my-profile" :src="require(`@/assets/images/avatars/${commentsStore.currentUser.image.png}`)">
       </div>
-      <div>
+      <div class="add-text">
         <textarea placeholder="Add a comment ..." v-model="newContent"/>
       </div>
       <div>

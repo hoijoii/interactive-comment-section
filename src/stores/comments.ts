@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import _ from 'lodash'
 import { IComment, IComments, IReplies, IUser } from '@/types/comments'
+//import ValidationsUtils from '@/utils/validations-utils'
 
 export const useCommentsStore = defineStore('commentsStore', {
   state: () => ({
@@ -8,15 +9,16 @@ export const useCommentsStore = defineStore('commentsStore', {
     comments: _.cloneDeep(require('@/assets/data/data.json')).comments as Array<IComment>,
     target: { 
       comment_id: 0,
-      reply_id: 0
+      reply_id: 0,
     } as any,
+
+    commenter: '', // required to reply
+
     deletePopup : false
   }),
   actions: {
     addComment(comment: IComment) {
       this.comments.push(comment)
-
-      console.log(this.comments)
     },
 
     updateComment(comment_id: number, comment_content?: string, reply_id?: number, reply_content?: string) {
@@ -33,7 +35,6 @@ export const useCommentsStore = defineStore('commentsStore', {
 
     deleteComment() {
       let comment : IComment | any = this.findComment(this.target.comment_id)
-      console.log(comment)
       
       if (!this.target.reply_id) this.comments.splice(comment.id-1, 1)
       else {
@@ -57,6 +58,10 @@ export const useCommentsStore = defineStore('commentsStore', {
                       : (targetReply.score !== 0 ? targetReply.score -= 1 : targetReply.score = 0)
       }
       
+    },
+
+    addReply(comment_id:number, reply: IReplies) {
+      this.findComment(comment_id)?.replies.push(reply)
     },
 
     // utils
