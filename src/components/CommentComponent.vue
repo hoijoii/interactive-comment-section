@@ -39,7 +39,7 @@
               <img class="my-profile" :src="require(`@/assets/images/avatars/${commentsStore.currentUser.image.png}`)">
             </div>
             <div class="add-text">
-              <textarea placeholder="Add a comment ..." v-model="replyContent"/>
+              <textarea :placeholder="'@'+commentsStore.commenter" v-model="replyContent"/>
             </div>
             <div>
               <button class="submit-btn" @click="sendReply">SEND</button>
@@ -113,7 +113,7 @@ const updateScore = (operate:string, comment_id:number, reply_id?:number) => {
 
 // Variables & methods of reply
 const replyActive: Ref<boolean> = ref(false)
-const replyContent : Ref<string | any> = ref('')
+const replyContent : Ref<string | any> = ref()
 
 const sendReply = () => {
   let target = commentsStore.findComment(props.id+1)

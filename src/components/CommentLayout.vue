@@ -16,7 +16,7 @@
           <img :src="require(`@/assets/images/avatars/${user.image.png}`)" class="profile"/>
           <div class="mg-lft13 name">{{ user.username }}</div>
           <div v-if="user.username === commentsStore.currentUser.username" class="mg-lft13 you">you</div>
-          <div class="mg-lft13 grayish-blue">{{ createdAt }}</div>
+          <div class="mg-lft13 grayish-blue">{{ setDateFormat(createdAt) }}</div>
 
           <!-- buttons -->
           <div class="reply mg-auto" v-if="user.username !== commentsStore.currentUser.username">
@@ -48,22 +48,17 @@
             <textarea class="edit-area" v-model="editContent"/>
             <button class="submit-btn update mg-auto" @click="updateBtn(editContent)">UPDATE</button>
           </div>
-
         </div>
-        
-      </div>
-
-      <div>
-
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang='ts'>
-import { ref, Ref, defineProps, defineEmits } from 'vue'
+import { ref, Ref, defineProps, defineEmits, watch } from 'vue'
 import InlineSvg from 'vue-inline-svg'
 import { useCommentsStore } from '@/stores/comments'
+import StringUtils from '@/utils/string-utils'
 
 const commentsStore = useCommentsStore()
 
@@ -82,11 +77,11 @@ const props = defineProps({
   isReply: Boolean
 })
 
-/* const scoreBtn = () => {
-  commentsStore.target = { comment_id:  }
-  commentsStore.pmScore
-} */
+const setDateFormat = (date: string) => {
+  return StringUtils.dateFormat(date)
+}
 
+// Update / Delete / Reply content
 const editActive : Ref<boolean> = ref(false)
 const editContent : Ref<string | any> = ref(props.content)
 

@@ -7,7 +7,7 @@
       <comment-component 
         :id="idx"
         :content="comment.content"
-        :createdAt="setDateFormat(comment.createdAt)"
+        :createdAt="comment.createdAt"
         :score="comment.score"
         :user="comment.user"
         :replies="comment.replies"
