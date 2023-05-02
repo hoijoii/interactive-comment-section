@@ -1,6 +1,64 @@
 <template>
   <div>
     <div class="comment-area">
+      <div class="comment">
+        <div class="comment-content">
+
+          <div class="score">
+            <div class="score-wrapper">
+              <inline-svg :src="require('@/assets/images/icon-plus.svg')" />
+              <div class="num">{{ score }}</div>
+              <inline-svg :src="require('@/assets/images/icon-minus.svg')" />
+            </div>
+          </div>
+
+          <div class="content-wrapper">
+            <div class="top">
+              <img :src="require(`@/assets/images/avatars/${user.image.png}`)" class="profile"/>
+              <div class="mg-lft13 name">{{ user.username }}</div>
+              <div v-if="user.username === commentsStore.currentUser.username" class="mg-lft13 you">you</div>
+              <div class="mg-lft13 grayish-blue">{{ setDateFormat(createdAt) }}</div>
+
+              <comment-options 
+                :user="user"
+                @replyBtn="replyFormShow = !replyFormShow"
+                @editBtn="editFormShow = !editFormShow"
+                @deleteBtn=""
+              />
+            </div>
+
+            <div class="body">
+              <div class="text grayish-blue">{{ content }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="wrapper">
+      <div class="reply-area">
+        <div v-if="replies.length !== 0">
+          <reply-component v-for="reply in replies" :key="reply.id"
+            :comment_id="id"
+            :id="reply.id"
+            :content="reply.content"
+            :createdAt="reply.createdAt"
+            :score="reply.score"
+            :user="reply.user"
+            :replyingTo="reply.replyingTo"
+          />
+        </div>
+        <div v-if="replyFormShow" class="add-reply">
+          <input-form 
+            :comment_id="id"
+            :isReply=true
+            @submit="replyFormShow = false"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="comment-area">
       <comment-layout
         :content=content
         :createdAt="createdAt"
@@ -47,18 +105,21 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
 <script setup lang='ts'>
 import { ref, Ref, defineProps, computed } from 'vue'
 import { useCommentsStore } from '@/stores/comments'
-import CommentLayout from './CommentLayout.vue'
 import { IComment, IReplies } from '@/types/comments'
+import CommentOptions from './CommentOptions.vue'
+import InputForm from './InputForm.vue'
+import ReplyComponent from './ReplyComponent.vue'
+import StringUtils from '@/utils/string-utils'
+import InlineSvg from 'vue-inline-svg'
 import moment from 'moment'
 import _ from 'lodash'
-import { classPrivateMethod } from '@babel/types'
 
 const commentsStore = useCommentsStore()
 
@@ -89,12 +150,21 @@ const props = defineProps({
   }
 })
 
+const setDateFormat = (date: string) => {
+  return StringUtils.dateFormat(date)
+}
+
 // Variables & methods of comments
-const edit = (reply_id?:number): string =>{
+
+const replyFormShow : Ref<boolean> = ref(false)
+const editFormShow: Ref<boolean> = ref(false)
+
+/* const edit = (reply_id?:number): string =>{
+
   // If comment component is case of reply, refEditContent is Array => [ {editContent: ''}, {editContent: ''} ]
   return refEditContent.value.editContent ? refEditContent.value.editContent
                                         : refEditContent.value[_.findIndex(props.replies, { 'id': reply_id })].editContent
-}
+} */
 
 const updateComment = (comment_id: number, comment_content?: string, reply_id?: number, reply_content?: string) => {
   commentsStore.updateComment(comment_id, comment_content, reply_id, reply_content)

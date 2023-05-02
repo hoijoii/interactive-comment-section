@@ -1,6 +1,6 @@
 <template>
   <div :class="['comment', {'reply-space':isReply}]">
-    <div class="comment-content">
+    <!-- <div class="comment-content">
 
       <div class="score">
         <div class="score-wrapper">
@@ -18,7 +18,6 @@
           <div v-if="user.username === commentsStore.currentUser.username" class="mg-lft13 you">you</div>
           <div class="mg-lft13 grayish-blue">{{ setDateFormat(createdAt) }}</div>
 
-          <!-- buttons -->
           <div class="reply mg-auto" v-if="user.username !== commentsStore.currentUser.username">
             <button class="reply-btn top-btn" @click="replyBtn">
               <inline-svg :src="require('@/assets/images/icon-reply.svg')" />
@@ -50,7 +49,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 

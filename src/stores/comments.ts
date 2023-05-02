@@ -62,6 +62,7 @@ export const useCommentsStore = defineStore('commentsStore', {
 
     addReply(comment_id:number, reply: IReplies) {
       this.findComment(comment_id)?.replies.push(reply)
+      console.log(this.comments)
     },
 
     // utils
