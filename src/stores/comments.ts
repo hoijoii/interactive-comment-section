@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import _ from 'lodash'
 import { IComment, IComments, IReplies, IUser } from '@/types/comments'
+import { IDialogTarget } from '@/types/dialogs'
 //import ValidationsUtils from '@/utils/validations-utils'
 
 export const useCommentsStore = defineStore('commentsStore', {
@@ -11,10 +12,6 @@ export const useCommentsStore = defineStore('commentsStore', {
       comment_id: 0,
       reply_id: 0,
     } as any,
-
-    commenter: '', // required to reply
-
-    deletePopup : false
   }),
   actions: {
     addComment(comment: IComment) {
@@ -33,16 +30,21 @@ export const useCommentsStore = defineStore('commentsStore', {
       }
     },
 
-    deleteComment() {
-      let comment : IComment | any = this.findComment(this.target.comment_id)
-      
-      if (!this.target.reply_id) this.comments.splice(comment.id-1, 1)
+    deleteComment(target: IDialogTarget) {
+      let comment : IComment | any = this.findComment(target.comment_id + 1)
+
+      if (!target.reply_id) {
+        this.comments.splice(comment.id-1, 1)
+      }
       else {
-        let replyIdx : number = _.findIndex(comment.replies, { 'id': this.target.reply_id })
+        let replyIdx : number = _.findIndex(comment.replies, { 'id': target.reply_id })
         comment.replies.splice(replyIdx, 1)
       }
+    },
 
-      this.resetTarget()
+    addReply(comment_id:number, reply: IReplies) {
+      this.findComment(comment_id)?.replies.push(reply)
+      console.log(this.comments)
     },
 
     pmScore(operate: string, comment_id: number, reply_id?: number) {
@@ -58,11 +60,6 @@ export const useCommentsStore = defineStore('commentsStore', {
                       : (targetReply.score !== 0 ? targetReply.score -= 1 : targetReply.score = 0)
       }
       
-    },
-
-    addReply(comment_id:number, reply: IReplies) {
-      this.findComment(comment_id)?.replies.push(reply)
-      console.log(this.comments)
     },
 
     // utils

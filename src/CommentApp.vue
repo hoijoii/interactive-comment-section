@@ -1,6 +1,6 @@
 <template>
-  <div id="alert" v-if="commentsStore.deletePopup">
-    <alert-component />
+  <div id="alert" v-if="dialogsStore.dialogs.length !== 0">
+    <alert-modal />
   </div>
   <div id="container">    
     <div class="comment-list mg-tb12" v-for="(comment, idx) in commentsStore.comments" :key="idx">
@@ -19,12 +19,14 @@
 
 <script lang="ts" setup>
 import CommentComponent from '@/components/CommentComponent.vue'
-import AlertComponent from '@/components/AlertComponent.vue'
+import AlertModal from '@/components/AlertModal.vue'
 import InputForm from '@/components/InputForm.vue'
 import { useCommentsStore } from '@/stores/comments'
+import { useDialogsStore } from './stores/dialogs'
 
 // pinia stores
 const commentsStore = useCommentsStore()
+const dialogsStore = useDialogsStore()
 
 // filters
 </script>

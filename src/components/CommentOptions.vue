@@ -7,7 +7,7 @@
       </button>
     </div>
     <div class="my-btn" v-else>
-      <button class="delete top-btn" @click="emit('deleteBtn')">
+      <button class="delete top-btn" @click="deleteBtn">
         <inline-svg :src="require('@/assets/images/icon-delete.svg')" />
         <span class="mg-lft7">Delete</span>
       </button>
@@ -22,14 +22,16 @@
 <script setup lang='ts'>
 import InlineSvg from 'vue-inline-svg'
 import { useCommentsStore } from '@/stores/comments'
+import { useDialogsStore } from '@/stores/dialogs';
 import { defineEmits } from 'vue';
+import { DIALOG_TYPE, IDialogTarget } from '@/types/dialogs';
 
 const commentsStore = useCommentsStore()
+const dialogsStore = useDialogsStore()
 
 const props = defineProps({
-  content: String,
-  createdAt: String,
-  score: Number,
+  comment_id: Number,
+  reply_id: Number,
   user: {
     Type: Object,
     default: {
@@ -37,10 +39,24 @@ const props = defineProps({
       username: ''
     }
   },
-  replyingTo: String,
   isReply: Boolean
 })
 
-const emit = defineEmits(['replyBtn', 'deleteBtn', 'editBtn'])
+const emit = defineEmits(['replyBtn', 'editBtn'])
+
+const deleteBtn = () => {
+  dialogsStore.addDialog({
+    id: "DELETE_COMMENT",
+    title: "Delete comment",
+    message: "Are you sure you want to delete this comment? This will remove the comment and can't be undone.",
+    type: DIALOG_TYPE.CONFIRM,
+    target: {
+      comment_id: props.comment_id,
+      reply_id: props.reply_id ? props.reply_id : 0
+    }
+  })
+
+  console.log(dialogsStore.dialogs)
+}
 
 </script>

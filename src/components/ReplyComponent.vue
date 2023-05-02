@@ -19,6 +19,8 @@
 
             <comment-options 
                   :user="user"
+                  :comment_id="comment_id"
+                  :reply_id="id"
                   @replyBtn="replyFormShow = !replyFormShow"
             />
           </div>
