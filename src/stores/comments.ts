@@ -19,8 +19,8 @@ export const useCommentsStore = defineStore('commentsStore', {
     },
 
     updateComment(comment_id: number, comment_content?: string, reply_id?: number, reply_content?: string) {
-      let comment : IComment | any = this.findComment(comment_id)
-
+      let comment : IComment | any = this.findComment(comment_id+1)
+      console.log(comment)
       if (comment_content) {
         comment.content = comment_content
       }
@@ -58,7 +58,6 @@ export const useCommentsStore = defineStore('commentsStore', {
         operate === 'plus' ? targetReply.score += 1 
                       : (targetReply.score !== 0 ? targetReply.score -= 1 : null)
       }
-      
     },
 
     // utils

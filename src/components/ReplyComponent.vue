@@ -22,12 +22,17 @@
                   :comment_id="comment_id"
                   :reply_id="id"
                   @replyBtn="replyFormShow = !replyFormShow"
+                  @editBtn="editFormShow = !editFormShow"
             />
           </div>
           <div class="body">
-            <div class="text grayish-blue">
+            <div class="text grayish-blue" v-if="!editFormShow">
               <span class="replying-to">@{{ replyingTo }}</span>
               {{ content }}
+            </div>
+            <div v-else class="edit-input">
+              <textarea class="edit-area" v-model="editContent"/>
+              <button class="submit-btn update mg-auto" @click="updateBtn">UPDATE</button>
             </div>
           </div>
         </div>
@@ -79,6 +84,14 @@ const setDateFormat = (date: string) => {
 const emit = defineEmits(['plus', 'minus'])
 
 const replyFormShow: Ref<boolean> = ref(false)
+const editFormShow: Ref<boolean> = ref(false)
+
+const editContent: Ref<string> = ref(props.content)
+
+const updateBtn = () => {
+  commentsStore.updateComment(props.comment_id, null, props.id, editContent.value)
+  editFormShow.value = false
+}
 
 /* watch(commentsStore.comments, () => {
 
