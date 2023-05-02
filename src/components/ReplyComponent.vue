@@ -4,9 +4,9 @@
       <div class="comment-content">
         <div class="score">
           <div class="score-wrapper">
-            <inline-svg :src="require('@/assets/images/icon-plus.svg')" @click="emit('plus')" />
+            <inline-svg :src="require('@/assets/images/icon-plus.svg')" @click="commentsStore.pmScore('plus', comment_id, id)" />
             <div class="num">{{ score }}</div>
-            <inline-svg :src="require('@/assets/images/icon-minus.svg')" @click="emit('minus')"/>
+            <inline-svg :src="require('@/assets/images/icon-minus.svg')" @click="commentsStore.pmScore('minus', comment_id, id)"/>
           </div>
         </div>
 

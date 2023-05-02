@@ -48,16 +48,15 @@ export const useCommentsStore = defineStore('commentsStore', {
     },
 
     pmScore(operate: string, comment_id: number, reply_id?: number) {
-      let comment: IComment | any = this.findComment(comment_id)
-
+      let comment: IComment | any = this.findComment(comment_id+1)
       if (!reply_id) {
         operate === 'plus' ? comment.score += 1 
-                      : (comment.score !== 0 ? comment.score -= 1 : comment.score = 0)
+                      : (comment.score !== 0 ? comment.score -= 1 : null)
       } 
       else {
         let targetReply: IReplies = comment.replies[_.findIndex(comment.replies, { 'id': reply_id })]
         operate === 'plus' ? targetReply.score += 1 
-                      : (targetReply.score !== 0 ? targetReply.score -= 1 : targetReply.score = 0)
+                      : (targetReply.score !== 0 ? targetReply.score -= 1 : null)
       }
       
     },
