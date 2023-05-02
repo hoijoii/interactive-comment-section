@@ -21,6 +21,7 @@
 
               <comment-options 
                 :user="user"
+                :comment_id="id"
                 @replyBtn="replyFormShow = !replyFormShow"
                 @editBtn="editFormShow = !editFormShow"
                 @deleteBtn=""
