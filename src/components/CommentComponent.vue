@@ -67,19 +67,17 @@
 <script setup lang='ts'>
 import { ref, Ref, defineProps, computed } from 'vue'
 import { useCommentsStore } from '@/stores/comments'
-import { IComment, IReplies } from '@/types/comments'
 import CommentOptions from './CommentOptions.vue'
 import InputForm from './InputForm.vue'
 import ReplyComponent from './ReplyComponent.vue'
 import StringUtils from '@/utils/string-utils'
 import InlineSvg from 'vue-inline-svg'
-import moment from 'moment'
 import _ from 'lodash'
 
+// stores
 const commentsStore = useCommentsStore()
 
-const refEditContent: Ref<any> = ref(null)
-
+// props & emits
 const props = defineProps({
   id: Number,
   content: String,
@@ -105,11 +103,12 @@ const props = defineProps({
   }
 })
 
+// filters
 const setDateFormat = (date: string) => {
   return StringUtils.dateFormat(date)
 }
 
-// Variables & methods of comments
+// Variables & methods of updating comment
 
 const replyFormShow : Ref<boolean> = ref(false)
 const editFormShow: Ref<boolean> = ref(false)

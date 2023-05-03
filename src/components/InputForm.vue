@@ -17,11 +17,13 @@
 <script setup lang='ts'>
 import { useCommentsStore } from '@/stores/comments';
 import { IComment, IReplies } from '@/types/comments';
-import { reactive, ref, Ref } from 'vue'
+import { ref, Ref } from 'vue'
 import moment from 'moment'
 
+// stores
 const commentsStore = useCommentsStore()
 
+// props & emits
 const props = defineProps({
   comment_id: Number,
   isReply: Boolean
@@ -29,6 +31,7 @@ const props = defineProps({
 
 const emit = defineEmits(['submit'])
 
+// Add comment & reply
 const newContent: Ref<string> = ref('')
 
 const submit = () => {

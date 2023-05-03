@@ -24,11 +24,13 @@ import InlineSvg from 'vue-inline-svg'
 import { useCommentsStore } from '@/stores/comments'
 import { useDialogsStore } from '@/stores/dialogs';
 import { defineEmits } from 'vue';
-import { DIALOG_TYPE, IDialogTarget } from '@/types/dialogs';
+import { DIALOG_TYPE } from '@/types/dialogs';
 
+// stores
 const commentsStore = useCommentsStore()
 const dialogsStore = useDialogsStore()
 
+// props & emits
 const props = defineProps({
   comment_id: Number,
   reply_id: Number,
@@ -44,6 +46,7 @@ const props = defineProps({
 
 const emit = defineEmits(['replyBtn', 'editBtn'])
 
+// delete comment
 const deleteBtn = () => {
   dialogsStore.addDialog({
     id: "DELETE_COMMENT",
@@ -55,8 +58,6 @@ const deleteBtn = () => {
       reply_id: props.reply_id ? props.reply_id : 0
     }
   })
-
-  console.log(dialogsStore.dialogs)
 }
 
 </script>

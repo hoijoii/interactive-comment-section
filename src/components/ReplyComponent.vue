@@ -59,8 +59,10 @@ import InlineSvg from 'vue-inline-svg'
 import { useCommentsStore } from '@/stores/comments'
 import StringUtils from '@/utils/string-utils'
 
+// pinia stores
 const commentsStore = useCommentsStore()
 
+// props & emits
 const props = defineProps({
   comment_id: Number,
   id: Number,
@@ -77,24 +79,23 @@ const props = defineProps({
   replyingTo: String,
 })
 
+const emit = defineEmits(['plus', 'minus'])
+
+// filter
 const setDateFormat = (date: string) => {
   return StringUtils.dateFormat(date)
 }
 
-const emit = defineEmits(['plus', 'minus'])
-
+// show or not input form
 const replyFormShow: Ref<boolean> = ref(false)
 const editFormShow: Ref<boolean> = ref(false)
 
 const editContent: Ref<string> = ref(props.content)
 
+// update button click event
 const updateBtn = () => {
   commentsStore.updateReply(props.comment_id, props.id, editContent.value)
   editFormShow.value = false
 }
-
-/* watch(commentsStore.comments, () => {
-
-}) */
 
 </script>

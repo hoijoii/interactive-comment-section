@@ -1,8 +1,7 @@
 import { defineStore } from 'pinia'
 import _ from 'lodash'
-import { IComment, IComments, IReplies, IUser } from '@/types/comments'
+import { IComment, IReplies, IUser } from '@/types/comments'
 import { IDialogTarget } from '@/types/dialogs'
-//import ValidationsUtils from '@/utils/validations-utils'
 
 export const useCommentsStore = defineStore('commentsStore', {
   state: () => ({

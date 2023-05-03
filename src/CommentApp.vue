@@ -28,7 +28,7 @@ import { useDialogsStore } from './stores/dialogs'
 const commentsStore = useCommentsStore()
 const dialogsStore = useDialogsStore()
 
-// filters
+
 </script>
 
 <style lang="scss">
