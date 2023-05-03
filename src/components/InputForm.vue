@@ -51,7 +51,7 @@ const sendComment = () => {
 }
 
 const sendReply = () => {
-  let target = commentsStore.findComment(props.comment_id+1)
+  let target = commentsStore.findComment(props.comment_id)
   let newComment : IReplies = {
     id: target && target.replies.length !== 0 ? target.replies[target?.replies.length-1].id+1 : 1,
     content: newContent.value,
@@ -61,7 +61,7 @@ const sendReply = () => {
     user: commentsStore.currentUser,
   }
 
-  commentsStore.addReply(props.comment_id+1, newComment)
+  commentsStore.addReply(props.comment_id, newComment)
   newContent.value = ''
 } 
 

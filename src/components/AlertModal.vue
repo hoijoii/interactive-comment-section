@@ -23,7 +23,7 @@ const dialogsStore = useDialogsStore()
 const dialog = dialogsStore.dialogs[0]
 
 const deleteComment = () => {
-  commentsStore.deleteComment(dialog.target)
+  !dialog.target.reply_id ? commentsStore.deleteComment(dialog.target) : commentsStore.deleteReply(dialog.target)
   onClose()
 }
 

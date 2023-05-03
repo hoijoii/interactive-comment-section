@@ -18,20 +18,13 @@ export const useCommentsStore = defineStore('commentsStore', {
       this.comments.push(comment)
     },
 
-    updateComment(comment_id: number, comment_content?: string, reply_id?: number, reply_content?: string) {
-      let comment : IComment | any = this.findComment(comment_id+1)
-      console.log(comment)
-      if (comment_content) {
-        comment.content = comment_content
-      }
-      if (reply_content) {
-        let reply : IReplies = _.find(comment.replies, { 'id' : reply_id })
-        reply.content = reply_content
-      }
+    updateComment(comment_id: number, comment_content: string) {
+      let comment : IComment | any = this.findComment(comment_id)
+      comment.content = comment_content
     },
 
     deleteComment(target: IDialogTarget) {
-      let comment : IComment | any = this.findComment(target.comment_id + 1)
+      let comment : IComment | any = this.findComment(target.comment_id)
 
       if (!target.reply_id) {
         this.comments.splice(comment.id-1, 1)
@@ -44,11 +37,21 @@ export const useCommentsStore = defineStore('commentsStore', {
 
     addReply(comment_id:number, reply: IReplies) {
       this.findComment(comment_id)?.replies.push(reply)
-      console.log(this.comments)
+    },
+
+    updateReply(comment_id: number, reply_id: number, reply_content: string) {
+      let comment : IComment | any = this.findComment(comment_id)
+      _.find(comment.replies, { 'id' : reply_id }).content = reply_content
+    },
+
+    deleteReply(target: IDialogTarget) {
+      let comment : IComment | any = this.findComment(target.comment_id)
+      const replyIdx : number = _.findIndex(comment.replies, { 'id': target.reply_id })
+      comment.replies.splice(replyIdx, 1)
     },
 
     pmScore(operate: string, comment_id: number, reply_id?: number) {
-      let comment: IComment | any = this.findComment(comment_id+1)
+      let comment: IComment | any = this.findComment(comment_id)
       if (!reply_id) {
         operate === 'plus' ? comment.score += 1 
                       : (comment.score !== 0 ? comment.score -= 1 : null)
@@ -62,11 +65,7 @@ export const useCommentsStore = defineStore('commentsStore', {
 
     // utils
     findComment(comment_id : number) {
-      return _.find(this.comments, { 'id': comment_id })
-    },
-
-    findReplyIdx(comment: IComment, reply_id : number) {
-
+      return _.find(this.comments, { 'id': comment_id+1 })
     },
 
     resetTarget() {

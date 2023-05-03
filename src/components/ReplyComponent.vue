@@ -89,7 +89,7 @@ const editFormShow: Ref<boolean> = ref(false)
 const editContent: Ref<string> = ref(props.content)
 
 const updateBtn = () => {
-  commentsStore.updateComment(props.comment_id, null, props.id, editContent.value)
+  commentsStore.updateReply(props.comment_id, props.id, editContent.value)
   editFormShow.value = false
 }
 
