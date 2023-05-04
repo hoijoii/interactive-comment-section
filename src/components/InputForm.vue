@@ -7,7 +7,8 @@
       <div class="add-text">
         <textarea placeholder="Add a comment ..." v-model="newContent"/>
       </div>
-      <div>
+      <div class="image submit">
+        <img class="hidden-profile" :src="require(`@/assets/images/avatars/${commentsStore.currentUser.image.png}`)">
         <button class="submit-btn" @click="submit">SEND</button>
       </div>
     </div>

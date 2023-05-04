@@ -4,12 +4,19 @@
       <div class="comment">
         <div class="comment-content">
 
-          <div class="score">
+          <div class="score flex-item">
             <div class="score-wrapper">
-              <inline-svg :src="require('@/assets/images/icon-plus.svg')" @click="commentsStore.pmScore('plus', id)"/>
+              <inline-svg :src="require('@/assets/images/icon-plus.svg')" @click="commentsStore.pmScore('plus', id)" class="plus" />
               <div class="num">{{ score }}</div>
-              <inline-svg :src="require('@/assets/images/icon-minus.svg')" @click="commentsStore.pmScore('minus', id)" />
+              <inline-svg :src="require('@/assets/images/icon-minus.svg')" @click="commentsStore.pmScore('minus', id)" class="minus" />
             </div>
+            <comment-options 
+                :user="user"
+                :comment_id="id"
+                @replyBtn="replyFormShow = !replyFormShow"
+                @editBtn="editFormShow = !editFormShow"
+                class="options hidden"
+              />
           </div>
 
           <div class="content-wrapper">
@@ -24,7 +31,9 @@
                 :comment_id="id"
                 @replyBtn="replyFormShow = !replyFormShow"
                 @editBtn="editFormShow = !editFormShow"
+                class="options"
               />
+              
             </div>
 
             <div class="body">

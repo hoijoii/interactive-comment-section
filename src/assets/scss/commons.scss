@@ -31,6 +31,7 @@
   font-size: 16px;
   font-weight: 600;
   cursor:pointer;
+  //display: flex;
 
   color: #5457B6;
 
@@ -39,7 +40,7 @@
   }
 
     &:hover {
-      color: hsl(239, 57%, 85%);
+      color: hsl(240, 20%, 81%);
       svg {
         fill: hsl(239, 57%, 85%);
       }

@@ -12,7 +12,9 @@ html, body {
 }
 
 #container {
-  width: 800px;
+  max-width: 800px;
+  min-width: 555px;
+  margin: 0px 50px;
   // min-height: 800px;
 }
 
@@ -21,7 +23,6 @@ html, body {
                                     CommentLayout
 
 ============================================================================= */
-
 
 .comment {
   background-color: white;
@@ -36,6 +37,14 @@ html, body {
 
   .comment-content {
     display: flex;
+
+    @media(min-width:745px) {
+      .flex-item {
+        .options {
+          display: none;
+        }
+      }
+    }
 
     .score {
       display: flex;
@@ -73,8 +82,14 @@ html, body {
       }
     }
 
+    @media(min-width: 745px) {
+      .content-wrapper {
+        margin-left: 20px;
+      }
+      
+    }
+
     .content-wrapper{
-      margin-left: 20px;
       box-sizing: border-box;
       width: 100%;
 
@@ -111,8 +126,14 @@ html, body {
   }
 }
 
+@media(max-width: 867px) {
+  .comment {
+    
+  }
+}
+
 .wrapper {
-  margin-left: 30px;
+  margin-left: 10px;
   border-left: 2px solid hsl(223, 19%, 93%);
 }
 
@@ -132,7 +153,7 @@ html, body {
 }
 
 .reply-area {
-  margin-left: 35px;
+  margin-left: 10px;
 
   .replying-to {
     color: #5457B6;
@@ -140,17 +161,32 @@ html, body {
   }
 }
 
-.my-comment {
-  display: flex;
-  justify-content: space-between;
+@media(min-width: 745px) {
+  .my-comment {
+    display: grid;
+    grid-template-columns: 69px 6fr 98px;
+  
+    .my-profile {
+      width: 48px;
+    }
 
-  .my-profile {
-    width: 48px;
+    .hidden-profile {
+      display: none;
+    }
+  
+    .submit {
+      margin-left: auto;
+    }
   }
 }
 
+
+.my-btn {
+  display: flex;
+}
+
 textarea {
-  width: 570px;
+  width: 100%;
   min-height: 80px;
   border: 2px solid hsl(223, 19%, 93%);
   border-radius: 10px;
@@ -163,12 +199,6 @@ textarea {
   &:focus {
     outline: 1px solid #5457B6;
     border: 1px solid #5457B6;
-  }
-}
-
-.add-reply {
-  textarea {
-    width: 505px;
   }
 }
 
@@ -257,6 +287,93 @@ textarea {
 
     &:hover {
       background-color: #ed64699d;
+    }
+  }
+}
+
+
+/* ============================================================================= 
+
+                                    mobile
+
+============================================================================= */
+
+@media(max-width: 745px) {
+  #container {
+    max-width: 100%;
+    min-width: 375px;
+    margin: 0px 10px;
+    // min-height: 800px;
+  }
+
+  .comment {
+    padding: 19px;
+
+    .comment-content {
+      display: flex;
+      flex-direction: column;
+
+      .score {
+        order:2;
+
+        .score-wrapper {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          width: 100px !important;
+          height: 40px;
+          padding: 0px 14px;
+
+          .plus {
+            order: 3;
+          }
+          .num {
+            order: 2;
+          }
+          .minus {
+            order: 1;
+          }
+        }
+      }
+
+      .content-wrapper {
+        order:1;
+
+        .options {
+          display: none;
+        }
+
+        .body {
+          .text {
+            margin-bottom: 20px;
+          }
+        }
+      }
+    }
+  }
+
+  .my-comment {
+    display: grid;
+    
+    .image {
+      display: inline-block;
+
+      .my-profile {
+        display: none;
+      }
+
+      .hidden-profile {
+        width: 40px;
+      }
+    }
+    
+    .submit {
+      margin-top: 10px;
+      display: flex;
+
+      .submit-btn {
+        margin-left: auto;
+      }
     }
   }
 }
