@@ -126,14 +126,18 @@ html, body {
   }
 }
 
-@media(max-width: 867px) {
-  .comment {
-    
+@media(max-width: 745px) {
+  .wrapper {
+    margin-left: 10px !important;
+  }
+
+  .reply-area {
+    margin-left: 10px !important;
   }
 }
 
 .wrapper {
-  margin-left: 10px;
+  margin-left: 30px;
   border-left: 2px solid hsl(223, 19%, 93%);
 }
 
@@ -153,7 +157,7 @@ html, body {
 }
 
 .reply-area {
-  margin-left: 10px;
+  margin-left: 30px;
 
   .replying-to {
     color: #5457B6;
