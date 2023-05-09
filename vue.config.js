@@ -10,5 +10,7 @@ module.exports = defineConfig({
         `
       }
     }
-  }
+  },
+  publicPath: '/interactive-comment-section',
+  outputDir: 'docs'
 })
