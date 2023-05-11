@@ -6,11 +6,9 @@
 
           <div class="score flex-item">
             <div class="score-wrapper">
-              <PlusIcon />
-              <!-- <inline-svg :src="require('../assets/images/icon-plus.svg')" @click="commentsStore.pmScore('plus', id)" class="plus" /> -->
+              <PlusIcon @click="commentsStore.pmScore('plus', id)" class="plus" />
               <div class="num">{{ score }}</div>
-              <MinusIcon />
-              <!-- <inline-svg :src="require('../assets/images/icon-minus.svg')" @click="commentsStore.pmScore('minus', id)" class="minus" /> -->
+              <MinusIcon @click="commentsStore.pmScore('minus', id)" class="minus" />
             </div>
             <comment-options 
                 :user="user"

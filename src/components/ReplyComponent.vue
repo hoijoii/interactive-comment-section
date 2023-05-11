@@ -4,11 +4,9 @@
       <div class="comment-content">
         <div class="score flex-item">
           <div class="score-wrapper">
-            <!-- <inline-svg :src="require('@/assets/images/icon-plus.svg')" @click="commentsStore.pmScore('plus', comment_id, id)" class="plus" /> -->
-            <PlusIcon />
+            <PlusIcon @click="commentsStore.pmScore('plus', comment_id, id)" class="plus" />
             <div class="num">{{ score }}</div>
-            <!-- <inline-svg :src="require('@/assets/images/icon-minus.svg')" @click="commentsStore.pmScore('minus', comment_id, id)" class="minus" /> -->
-            <MinusIcon />
+            <MinusIcon @click="commentsStore.pmScore('minus', comment_id, id)" class="minus"/>
           </div>
 
           <comment-options 
