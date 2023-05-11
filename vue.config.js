@@ -23,6 +23,6 @@ module.exports = defineConfig({
       .use('svg-vue3-loader')
       .loader('svg-vue3-loader');
   },
-  publicPath: '/interactive-comment-section',
+  //publicPath: '/interactive-comment-section',
   outputDir: 'docs'
 })
