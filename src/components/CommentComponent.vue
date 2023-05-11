@@ -83,8 +83,8 @@ import InputForm from './InputForm.vue'
 import ReplyComponent from './ReplyComponent.vue'
 import StringUtils from '@/utils/string-utils'
 import InlineSvg from 'vue-inline-svg'
-import PlusIcon from '@/assets/images/icon-plus.svg'
-import MinusIcon from '@/assets/images/icon-minus.svg'
+import PlusIcon from '../assets/images/icon-plus.svg'
+import MinusIcon from '../assets/images/icon-minus.svg'
 import _ from 'lodash'
 
 // stores

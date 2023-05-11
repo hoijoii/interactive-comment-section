@@ -28,9 +28,9 @@ import { useCommentsStore } from '@/stores/comments'
 import { useDialogsStore } from '@/stores/dialogs';
 import { defineEmits } from 'vue';
 import { DIALOG_TYPE } from '@/types/dialogs';
-import ReplyIcon from '@/assets/images/icon-reply.svg'
-import DeleteIcon from '@/assets/images/icon-delete.svg'
-import EditIcon from '@/assets/images/icon-edit.svg'
+import ReplyIcon from '../assets/images/icon-reply.svg'
+import DeleteIcon from '../assets/images/icon-delete.svg'
+import EditIcon from '../assets/images/icon-edit.svg'
 
 // stores
 const commentsStore = useCommentsStore()
