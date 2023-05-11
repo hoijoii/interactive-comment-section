@@ -4,9 +4,11 @@
       <div class="comment-content">
         <div class="score flex-item">
           <div class="score-wrapper">
-            <inline-svg :src="require('@/assets/images/icon-plus.svg')" @click="commentsStore.pmScore('plus', comment_id, id)" class="plus" />
+            <!-- <inline-svg :src="require('@/assets/images/icon-plus.svg')" @click="commentsStore.pmScore('plus', comment_id, id)" class="plus" /> -->
+            <PlusIcon />
             <div class="num">{{ score }}</div>
-            <inline-svg :src="require('@/assets/images/icon-minus.svg')" @click="commentsStore.pmScore('minus', comment_id, id)" class="minus" />
+            <!-- <inline-svg :src="require('@/assets/images/icon-minus.svg')" @click="commentsStore.pmScore('minus', comment_id, id)" class="minus" /> -->
+            <MinusIcon />
           </div>
 
           <comment-options 
@@ -66,6 +68,8 @@ import { ref, Ref, defineProps, defineEmits, watch } from 'vue'
 import CommentOptions from './CommentOptions.vue'
 import InputForm from './InputForm.vue'
 import InlineSvg from 'vue-inline-svg'
+import PlusIcon from '@/assets/images/icon-plus.svg'
+import MinusIcon from '@/assets/images/icon-minus.svg'
 import { useCommentsStore } from '@/stores/comments'
 import StringUtils from '@/utils/string-utils'
 
