@@ -62,10 +62,9 @@
 </template>
 
 <script setup lang='ts'>
-import { ref, Ref, defineProps, defineEmits, watch } from 'vue'
+import { ref, Ref, defineProps, defineEmits } from 'vue'
 import CommentOptions from './CommentOptions.vue'
 import InputForm from './InputForm.vue'
-import InlineSvg from 'vue-inline-svg'
 import PlusIcon from '../assets/images/icon-plus.svg'
 import MinusIcon from '../assets/images/icon-minus.svg'
 import { useCommentsStore } from '@/stores/comments'

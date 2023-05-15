@@ -20,7 +20,6 @@
 </template>
 
 <script setup lang='ts'>
-import InlineSvg from 'vue-inline-svg'
 import { useCommentsStore } from '@/stores/comments'
 import { useDialogsStore } from '@/stores/dialogs';
 import { defineEmits } from 'vue';

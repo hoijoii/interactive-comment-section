@@ -74,13 +74,12 @@
 </template>
 
 <script setup lang='ts'>
-import { ref, Ref, defineProps, computed } from 'vue'
+import { ref, Ref, defineProps } from 'vue'
 import { useCommentsStore } from '@/stores/comments'
 import CommentOptions from './CommentOptions.vue'
 import InputForm from './InputForm.vue'
 import ReplyComponent from './ReplyComponent.vue'
 import StringUtils from '@/utils/string-utils'
-import InlineSvg from 'vue-inline-svg'
 import PlusIcon from '../assets/images/icon-plus.svg'
 import MinusIcon from '../assets/images/icon-minus.svg'
 import _ from 'lodash'
