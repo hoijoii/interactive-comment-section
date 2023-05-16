@@ -50,6 +50,13 @@
 
     <div class="wrapper">
       <div class="reply-area">
+        <div v-if="replyFormShow" class="add-reply">
+          <input-form 
+            :comment_id="id"
+            :isReply=true
+            @submit="replyFormShow = false"
+          />
+        </div>
         <div v-if="replies.length !== 0">
           <reply-component v-for="reply in replies" :key="reply.id"
             :comment_id="id"
@@ -59,13 +66,6 @@
             :score="reply.score"
             :user="reply.user"
             :replyingTo="reply.replyingTo"
-          />
-        </div>
-        <div v-if="replyFormShow" class="add-reply">
-          <input-form 
-            :comment_id="id"
-            :isReply=true
-            @submit="replyFormShow = false"
           />
         </div>
       </div>
