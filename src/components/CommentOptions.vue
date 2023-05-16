@@ -1,7 +1,7 @@
 <template>
   <div class="buttons mg-auto">
     <div class="not-me reply" v-if="user.username !== commentsStore.currentUser.username">
-      <button class="reply-btn top-btn" @click="emit('replyBtn')">
+      <button class="reply-btn top-btn" @click="emitReply">
         <ReplyIcon />
         <span class="mg-lft7">Reply</span>
       </button>
@@ -22,7 +22,7 @@
 <script setup lang='ts'>
 import { useCommentsStore } from '@/stores/comments'
 import { useDialogsStore } from '@/stores/dialogs';
-import { defineEmits } from 'vue';
+import { defineEmits, ref, Ref } from 'vue';
 import { DIALOG_TYPE } from '@/types/dialogs';
 import ReplyIcon from '../assets/images/icon-reply.svg'
 import DeleteIcon from '../assets/images/icon-delete.svg'
@@ -47,6 +47,18 @@ const props = defineProps({
 })
 
 const emit = defineEmits(['replyBtn', 'editBtn'])
+const replyingTo : Ref<string> = ref('')
+
+const emitReply = () => {
+  emit('replyBtn')
+  replyingTo.value = props.user.username
+}
+
+defineExpose({
+  replyingTo
+})
+
+
 
 // delete comment
 const deleteBtn = () => {
@@ -61,5 +73,7 @@ const deleteBtn = () => {
     }
   })
 }
+
+
 
 </script>

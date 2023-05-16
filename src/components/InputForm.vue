@@ -27,7 +27,8 @@ const commentsStore = useCommentsStore()
 // props & emits
 const props = defineProps({
   comment_id: Number,
-  isReply: Boolean
+  isReply: Boolean,
+  replyOption: Object
 })
 
 const emit = defineEmits(['submit'])
@@ -61,7 +62,7 @@ const sendReply = () => {
     content: newContent.value,
     createdAt: moment().format('YYYY-MM-DD HH:mm'),
     score: 0,
-    replyingTo: target.user.username,
+    replyingTo: props.replyOption ? props.replyOption.replyingTo : target.user.username, //props.replyingTo ? props.replyingTo : 
     user: commentsStore.currentUser,
   }
 

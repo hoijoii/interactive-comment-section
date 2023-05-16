@@ -9,12 +9,14 @@
             <MinusIcon @click="commentsStore.pmScore('minus', comment_id, id)" class="minus"/>
           </div>
 
+          <!-- mobile ui -->
           <comment-options 
                   :user="user"
                   :comment_id="comment_id"
                   :reply_id="id"
                   @replyBtn="replyFormShow = !replyFormShow"
                   @editBtn="editFormShow = !editFormShow"
+                  ref="option"
                   class="options"
             />
         </div>
@@ -26,12 +28,14 @@
             <div v-if="user.username === commentsStore.currentUser.username" class="mg-lft13 you">you</div>
             <div class="mg-lft13 grayish-blue">{{ setDateFormat(createdAt) }}</div>
 
+            <!-- desktop ui -->
             <comment-options 
                   :user="user"
                   :comment_id="comment_id"
                   :reply_id="id"
-                  @replyBtn="replyFormShow = !replyFormShow"
+                  @replyBtn="replyBtn"
                   @editBtn="editFormShow = !editFormShow"
+                  ref="replyOption"
                   class="options"
             />
           </div>
@@ -54,6 +58,7 @@
         <input-form
           :comment_id="comment_id"
           :isReply=true
+          :replyOption="replyOption ? replyOption : {}"
           @submit="replyFormShow=false"
         />
       </div>
@@ -62,7 +67,7 @@
 </template>
 
 <script setup lang='ts'>
-import { ref, Ref, defineProps, defineEmits } from 'vue'
+import { ref, Ref, defineProps, defineEmits, onMounted } from 'vue'
 import CommentOptions from './CommentOptions.vue'
 import InputForm from './InputForm.vue'
 import PlusIcon from '../assets/images/icon-plus.svg'
@@ -91,6 +96,12 @@ const props = defineProps({
 })
 
 const emit = defineEmits(['plus', 'minus'])
+const replyOption = ref(null)
+const replToRepl :Ref<string> = ref('')
+
+const setReplToRepl = () => {
+  replToRepl.value = replyOption.value ? replyOption.value.replyingTo : ''
+}
 
 // filter
 const setDateFormat = (date: string) => {
@@ -107,6 +118,12 @@ const editContent: Ref<string> = ref(props.content)
 const updateBtn = () => {
   commentsStore.updateReply(props.comment_id, props.id, editContent.value)
   editFormShow.value = false
+}
+
+// reply button click event
+const replyBtn = () => {
+  replyFormShow.value = !replyFormShow.value
+  setReplToRepl()
 }
 
 </script>
