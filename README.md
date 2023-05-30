@@ -1,19 +1,20 @@
-# interact-com
+# Interactive comments section
 
-## Project setup
-```
-npm install
-```
+Frondend Mentor challenge
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+#### :rocket: Live URL: https://hoijoii.github.io/Interactive-comment-section/
 
-### Compiles and minifies for production
-```
-npm run build
-```
+<br>
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+#### :heavy_check_mark: Built with ...
+- Vue3 / Pinia
+- Typescript
+- SCSS
+
+<br>
+
+#### :bulb: Interactive comments section
+
+<img src="./img-desktop.png">
+<img src="./img-mobile.png">
+
