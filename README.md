@@ -1,6 +1,6 @@
 # Interactive comments section
 
-Frondend Mentor challenge
+Frontend Mentor challenge
 
 #### :rocket: Live URL: https://hoijoii.github.io/Interactive-comment-section/
 
