@@ -2,7 +2,7 @@
 
 Frontend Mentor challenge
 
-#### :rocket: Live URL: https://hoijoii.github.io/Interactive-comment-section/
+#### :rocket: Live URL: https://oodhmo.github.io/Interactive-comment-section/
 
 <br>
 
